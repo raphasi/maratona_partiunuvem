@@ -1,0 +1,166 @@
+﻿<h2>Lista de Estudantes TFTEC</h2>
+
+<a class="btn btn-primary" style="margin-bottom:20px" onclick="PopupForm('@Url.Action("StoreOrEdit","Student")')"><i class="fa fa-plus"></i>Adicionar Aluno</a>
+
+<table id="StudentTable" class="table table-striped table-bordered" style="width:100%">
+
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Programa de Certificação</th>
+            <th>Módulo</th>
+            <th>Idade</th>
+            <th>Honorários</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+</table>
+
+
+<link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+
+@section scripts{
+
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>
+
+    <script src="//cdn.datatables.net/plug-ins/1.11.2/i18n/pt_br.json"></script>
+
+    <script>
+        var Popup, dataTable;
+
+        $(document).ready(function () {
+            dataTable =  $("#StudentTable").DataTable({
+
+                "ajax": {
+
+                    "url": "/Student/GetData",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+
+                "columns": [
+                    { "data": "Nome" },
+                    { "data": "Departamento" },
+                    { "data": "Modulo" },
+                    { "data": "Idade" },
+                    { "data": "Honorario" },
+                    {
+                        "data": "StudentID", "render": function (data) {
+
+                            return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("StoreOrEdit","Student")/" + data + "')><i class='fa fa-pencil'></i>Editar</a> <a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i>Deletar</a>";
+                        },
+
+                        "orderable": true,
+                        "searchable": true,
+                        "width": "500px",
+                        "search": "Pesquisar",
+                        "responsive": true,
+                        "paging": false,
+                    }
+
+
+                ],
+                 "paginate": {
+                        "next": "Próximo",
+                        "previous": "Anterior",
+                        "first": "Primeiro",
+                        "last": "Último"
+                },
+
+
+                "language": {
+                    "emptyTable": "Não buscou nada deseja incluir? Clique no botão <b>Adicionar Aluno</b>",
+                    "url": "//cdn.datatables.net/plug-ins/1.11.2/i18n/pt_br.json"
+                }
+
+            });
+        });
+
+        function PopupForm(url) {
+
+            var formDiv = $('<div/>');
+            $.get(url)
+                .done(function (response) {
+
+                    formDiv.html(response);
+
+                    Popup = formDiv.dialog({
+
+                        autoOpen : true,
+                        resizable : true,
+                        title : 'Detalhe dos Alunos TFTEC',
+                        height : 500,
+                        width : 700,
+                        close: function () {
+
+                            Popup.dialog('destroy').remove();
+                        }
+
+                    });
+
+                });
+        }
+
+        function SubmitForm(form) {
+
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+
+            $.ajax({
+                type: "POST",
+                url: form.action,
+                data: $(form).serialize(),
+                success: function (data) {
+
+                    if (data.success) {
+
+                        Popup.dialog('close');
+                        dataTable.ajax.reload();
+
+                        $.notify(data.message, {
+                            globalPosition: "top center",
+                            className:"success"
+                        })
+
+
+                    }
+                }
+                });
+            }
+
+            return false;
+
+        }
+
+        function Delete(id) {
+            if (confirm('Você deseja excluir o Aluno ?')) {
+
+                $.ajax({
+
+                    type: "POST",
+                    url: '@Url.Action("Delete","Student")/' + id,
+                    success: function (data) {
+
+                        if (data.success) {
+
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                    }
+
+                });
+            }
+        }
+
+    </script>
+}
+
+

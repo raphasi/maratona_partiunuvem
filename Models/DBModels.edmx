@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MvcCRUDDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alunoes">
+          <Key>
+            <PropertyRef Name="AlunoID" />
+          </Key>
+          <Property Name="AlunoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AlunoNome" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartamentoID" Type="int" Nullable="false" />
+          <Property Name="AssuntoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Assuntoes">
+          <Key>
+            <PropertyRef Name="AssuntoID" />
+          </Key>
+          <Property Name="AssuntoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssuntoInfo" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Departamentoes">
+          <Key>
+            <PropertyRef Name="DepartamentoID" />
+          </Key>
+          <Property Name="DepartamentoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartamentoNome" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Department" Type="varchar" MaxLength="50" />
+          <Property Name="Semester" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Fees" Type="int" />
+        </EntityType>
+        <Association Name="FK_Aluno_Assunto">
+          <End Role="Assuntoes" Type="Self.Assuntoes" Multiplicity="1" />
+          <End Role="Alunoes" Type="Self.Alunoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assuntoes">
+              <PropertyRef Name="AssuntoID" />
+            </Principal>
+            <Dependent Role="Alunoes">
+              <PropertyRef Name="AssuntoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aluno_Departamento">
+          <End Role="Departamentoes" Type="Self.Departamentoes" Multiplicity="1" />
+          <End Role="Alunoes" Type="Self.Alunoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentoes">
+              <PropertyRef Name="DepartamentoID" />
+            </Principal>
+            <Dependent Role="Alunoes">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MvcCRUDDBModelStoreContainer">
+          <EntitySet Name="Alunoes" EntityType="Self.Alunoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Assuntoes" EntityType="Self.Assuntoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamentoes" EntityType="Self.Departamentoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Aluno_Assunto" Association="Self.FK_Aluno_Assunto">
+            <End Role="Assuntoes" EntitySet="Assuntoes" />
+            <End Role="Alunoes" EntitySet="Alunoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aluno_Departamento" Association="Self.FK_Aluno_Departamento">
+            <End Role="Departamentoes" EntitySet="Departamentoes" />
+            <End Role="Alunoes" EntitySet="Alunoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MvcCRUDDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Idade" Type="Int32" />
+          <Property Name="Honorario" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Alunoes" EntityType="MvcCRUDDBModel.Aluno" />
+          <EntitySet Name="Assuntoes" EntityType="MvcCRUDDBModel.Assunto" />
+          <EntitySet Name="Departamentoes" EntityType="MvcCRUDDBModel.Departamento" />
+          <AssociationSet Name="FK_Aluno_Assunto" Association="MvcCRUDDBModel.FK_Aluno_Assunto">
+            <End Role="Assunto" EntitySet="Assuntoes" />
+            <End Role="Aluno" EntitySet="Alunoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aluno_Departamento" Association="MvcCRUDDBModel.FK_Aluno_Departamento">
+            <End Role="Departamento" EntitySet="Departamentoes" />
+            <End Role="Aluno" EntitySet="Alunoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Aluno">
+          <Key>
+            <PropertyRef Name="AlunoID" />
+          </Key>
+          <Property Name="AlunoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AlunoNome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartamentoID" Type="Int32" Nullable="false" />
+          <Property Name="AssuntoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Assunto" Relationship="MvcCRUDDBModel.FK_Aluno_Assunto" FromRole="Aluno" ToRole="Assunto" />
+          <NavigationProperty Name="Departamento" Relationship="MvcCRUDDBModel.FK_Aluno_Departamento" FromRole="Aluno" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="Assunto">
+          <Key>
+            <PropertyRef Name="AssuntoID" />
+          </Key>
+          <Property Name="AssuntoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssuntoInfo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Alunoes" Relationship="MvcCRUDDBModel.FK_Aluno_Assunto" FromRole="Assunto" ToRole="Aluno" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="DepartamentoID" />
+          </Key>
+          <Property Name="DepartamentoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartamentoNome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Alunoes" Relationship="MvcCRUDDBModel.FK_Aluno_Departamento" FromRole="Departamento" ToRole="Aluno" />
+        </EntityType>
+        <Association Name="FK_Aluno_Assunto">
+          <End Type="MvcCRUDDBModel.Assunto" Role="Assunto" Multiplicity="1" />
+          <End Type="MvcCRUDDBModel.Aluno" Role="Aluno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assunto">
+              <PropertyRef Name="AssuntoID" />
+            </Principal>
+            <Dependent Role="Aluno">
+              <PropertyRef Name="AssuntoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aluno_Departamento">
+          <End Type="MvcCRUDDBModel.Departamento" Role="Departamento" Multiplicity="1" />
+          <End Type="MvcCRUDDBModel.Aluno" Role="Aluno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="DepartamentoID" />
+            </Principal>
+            <Dependent Role="Aluno">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MvcCRUDDBModelStoreContainer" CdmEntityContainer="DBModel">
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="IsTypeOf(MvcCRUDDBModel.Student)">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Nome" ColumnName="Name" />
+          <ScalarProperty Name="Departamento" ColumnName="Department" />
+          <ScalarProperty Name="Modulo" ColumnName="Semester" />
+          <ScalarProperty Name="Idade" ColumnName="Age" />
+          <ScalarProperty Name="Honorario" ColumnName="Fees" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="Alunoes">
+            <EntityTypeMapping TypeName="MvcCRUDDBModel.Aluno">
+              <MappingFragment StoreEntitySet="Alunoes">
+                <ScalarProperty Name="AssuntoID" ColumnName="AssuntoID" />
+                <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+                <ScalarProperty Name="AlunoNome" ColumnName="AlunoNome" />
+                <ScalarProperty Name="AlunoID" ColumnName="AlunoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assuntoes">
+            <EntityTypeMapping TypeName="MvcCRUDDBModel.Assunto">
+              <MappingFragment StoreEntitySet="Assuntoes">
+                <ScalarProperty Name="AssuntoInfo" ColumnName="AssuntoInfo" />
+                <ScalarProperty Name="AssuntoID" ColumnName="AssuntoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentoes">
+            <EntityTypeMapping TypeName="MvcCRUDDBModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamentoes">
+                <ScalarProperty Name="DepartamentoNome" ColumnName="DepartamentoNome" />
+                <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

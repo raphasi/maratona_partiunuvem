@@ -1,0 +1,197 @@
+﻿.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+.footer {
+    background: #1a1a1a;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    padding: 7em 0;
+}
+
+    .footer a {
+        color: #ce0f3d;
+    }
+
+    .footer p {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer .copyright {
+        color: rgba(255, 255, 255, 0.3);
+        color: #999999;
+    }
+
+    .footer .footer-heading {
+        font-size: 18px;
+        margin-bottom: 30px;
+        font-weight: 800;
+        color: #fff;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    .footer ul.list-unstyled li a {
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer .block-21 .img {
+        display: block;
+        height: 80px;
+        width: 80px;
+    }
+
+    .footer .block-21 .text {
+        width: calc(100% - 100px);
+    }
+
+        .footer .block-21 .text .heading {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+            .footer .block-21 .text .heading a {
+                color: #fff;
+            }
+
+                .footer .block-21 .text .heading a:hover, .footer .block-21 .text .heading a:active, .footer .block-21 .text .heading a:focus {
+                    text-decoration: none;
+                }
+
+        .footer .block-21 .text .meta > div {
+            display: inline-block;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+
+            .footer .block-21 .text .meta > div a {
+                color: gray;
+            }
+
+    .footer .block-23 ul li {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+        .footer .block-23 ul li a {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer .block-23 ul li .icon {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+    .footer .ftco-footer-social li a {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ce0f3d;
+    }
+
+.ftco-footer-social li {
+    list-style: none;
+    margin: 0 10px 0 0;
+    display: inline-block;
+}
+
+    .ftco-footer-social li a {
+        height: 40px;
+        width: 40px;
+        display: block;
+        float: left;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        position: relative;
+    }
+
+        .ftco-footer-social li a span {
+            position: absolute;
+            font-size: 20px;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .ftco-footer-social li a:hover {
+            color: #fff;
+        }
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(206, 15, 61, 0.4);
+    }
+
+    70% {
+        -webkit-box-shadow: 0 0 0 30px rgba(206, 15, 61, 0);
+    }
+
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(206, 15, 61, 0);
+    }
+}
+
+wrap-about .block-18 {
+    display: block;
+    width: 100%;
+}
+
+@media (max-width: 991.98px) {
+    .wrap-about .block-18 {
+        margin-bottom: 2em;
+    }
+}
+
+.wrap-about .block-18 .icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: #f7e8f0;
+}
+
+    .wrap-about .block-18 .icon span {
+        color: #ce0f3d;
+        font-size: 34px;
+    }
+
+.wrap-about .block-18 .desc {
+    width: calc(100% - 80px);
+    margin: 0 0 0 auto;
+}
+
+.wrap-about .text {
+    position: relative;
+}
+
+@media (max-width: 767.98px) {
+    .wrap-about .text {
+        width: 100%;
+    }
+}
+
+.wrap-about .text .number {
+    line-height: 1;
+    font-weight: 700;
+    font-size: 30px;
+    color: #ce0f3d;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.wrap-about .text span {
+    font-size: 16px;
+    color: #000000;
+}
+
+@media (max-width: 767.98px) {
+    .wrap-about .counter-wrap {
+        margin-bottom: 20px;
+    }
+}

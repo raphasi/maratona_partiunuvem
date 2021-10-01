@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Aplicação da TFTEC</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="Content-Type” content=”text/html; charset=iso-8859-1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/Content/animate.css" />
+
+    <link rel="stylesheet" href="~/Content/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/Content/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="~/Content/magnific-popup.css" />
+
+    <link rel="stylesheet" href="~/Content/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="~/Content/jquery.timepicker.css" />
+    <link rel="stylesheet" href="~/Content/flaticon.css" />
+
+    <link href="~/Content/carousel.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/style_maratona.css" />
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">TFTEC - Treinamentos Online - sistema maratona - 3</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <section class="hero-wrap js-fullheight">
+        <div class="home-slider js-fullheight owl-carousel">
+            <div class="slider-item js-fullheight" style="background-image:url(../../images/cabecalho.png);">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+                        <div class="col-md-8 ftco-animate">
+                            <div class="text mt-md-5 w-100 text-center">
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center pb-5 mb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                    <a class="logo-footer" href="index.html"><img class="img-fluid mb-4" src="~/images/logo_tftec_nome.png" alt="logo" /></a>
+                    <p>CNPJ: 41.135.632/0001-40</p>
+                    <ul class="ftco-footer-social p-0">
+                        <li class="ftco-animate"><a href="https://www.facebook.com/tftectreinamentosonline"><span class="fa fa-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="https://www.linkedin.com/in/tftec-treinamentos-online-625816191/"><span class="fa fa-linkedin"></span></a></li>
+                        <li class="ftco-animate"><a href="https://www.instagram.com/tftec.online/"><span class="fa fa-instagram"></span></a></li>
+                        <li class="ftco-animate"><a href="https://www.youtube.com/channel/UCyFktIP0OmZDoIobmbEnyQQ?sub_confirmation=1"><span class="fa fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                </div>
+                <div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
+                    <h2 class="footer-heading"></h2>
+                    <ul class="list-unstyled"></ul>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                    <h2 class="footer-heading">Você possui alguma duvida?</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li><span class="icon fa fa-map"></span><span class="text">Porto Alegre, Rio Grande do Sul, BR</span></li>
+                            <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">contato@tftec.com.br</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-12 text-center">
+                    <p class="copyright">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> Todos os direitos reservados | by <a href="https://tftec.com.br" target="_blank">www.tftec.com.br</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+
+
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/notify.min.js"></script>
+
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.easing.1.3.js"></script>
+    <script src="~/Scripts/jquery.waypoints.min.js"></script>
+    <script src="~/Scripts/jquery.stellar.min.js"></script>
+    <script src="~/Scripts/jquery.animateNumber.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/jquery.timepicker.min.js"></script>
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <script src="~/Scripts/jquery.magnific-popup.min.js"></script>
+    <script src="~/Scripts/scrollax.min.js"></script>
+
+    <script src="~/Scripts/main_maratona.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
